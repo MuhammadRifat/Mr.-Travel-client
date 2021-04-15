@@ -7,7 +7,7 @@ const Main = () => {
         <div className="form p-3">
             <Form>
                 <Row>
-                    <Col md={6}>
+                    <Col md={7}>
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Control as="select" custom>
                                 <option selected  disabled>Destination</option>
@@ -19,7 +19,7 @@ const Main = () => {
                             </Form.Control>
                         </Form.Group>
                     </Col>
-                    <Col md={6}>
+                    <Col md={5}>
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Control as="select" custom>
                                 <option selected disabled>Tour type</option>
@@ -33,15 +33,15 @@ const Main = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={6}>
+                    <Col md={7}>
                         <InputGroup>
                             <InputGroup.Prepend>
-                                <InputGroup.Text>Start date</InputGroup.Text>
+                                <InputGroup.Text>Tour start date</InputGroup.Text>
                             </InputGroup.Prepend>
                             <Form.Control type="date" placeholder="Select date" />
                         </InputGroup>
                     </Col>
-                    <Col md={6}>
+                    <Col md={5}>
                         <button className="btn btn-primary btn-block">Search</button>
                     </Col>
                 </Row>

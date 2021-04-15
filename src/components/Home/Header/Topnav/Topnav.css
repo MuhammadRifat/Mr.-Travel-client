@@ -1,13 +1,13 @@
 .link{
     text-decoration: none;
-    color: white;
+    color: rgb(3, 26, 1);
     margin-right: 60px;
     margin-top: 7px;
     font-weight: 600;
 }
 .link:hover{
     text-decoration: none;
-    color: lightgray;
+    color: rgb(33, 99, 46);
 }
 #login-btn{
     background-color: white;

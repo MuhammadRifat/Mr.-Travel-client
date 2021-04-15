@@ -8,6 +8,7 @@ import { createContext } from 'react';
 import { useState } from 'react';
 import NotFound from './components/NotFound/NotFound';
 import Home from './components/Home/Home/Home';
+import Login from './components/Login/Login';
 
 export const userContext = createContext();
 
@@ -19,6 +20,9 @@ function App() {
         <Switch>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route exact path="/">
             <Home />

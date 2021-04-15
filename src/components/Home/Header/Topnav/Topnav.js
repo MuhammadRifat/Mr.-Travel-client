@@ -3,7 +3,8 @@ import { useContext } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { userContext } from '../../../../App';
-import './Topnav.css'
+import './Topnav.css';
+import logo from '../../../../images/default-monochrome.svg';
 
 const Topnav = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
@@ -12,10 +13,10 @@ const Topnav = () => {
             <Navbar collapseOnSelect expand="lg" variant="dark">
                 <Navbar.Brand href="#">
                     <img
-                        src=""
+                        src={logo}
                         width="200px"
                         className="d-inline-block align-top"
-                        alt="Store 2 Door"
+                        alt="Mr. Travel"
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
