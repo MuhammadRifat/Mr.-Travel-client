@@ -3,19 +3,19 @@ import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons'
 
-const ToursDetail = ({ tour }) => {
-    const { name, location, country, time, price, image } = tour;
+const ToursDetail = ({ tour, handleBookBtn }) => {
+    const { title, location, time, cost, imageUrl, _id } = tour;
     return (
         <Col md={4}>
             <div className="bg-light border rounded mt-3 shadow">
-                <img src={image} alt="" className="img-fluid w-100 rounded" />
+                <img src={imageUrl} alt="" className="img-fluid rounded" style={{width:'100%', height:'280px'}} />
                 <div className="p-3">
-                    <h4>{name}</h4>
-                    <small><FontAwesomeIcon icon={faMapMarkerAlt}/> {location} / {country}</small><br />
+                    <h4>{title}</h4>
+                    <small><FontAwesomeIcon icon={faMapMarkerAlt}/> {location}</small><br />
                     <small><FontAwesomeIcon icon={faClock}/> {time}</small><hr/>
                     <div className="d-flex mt-3">
-                        <h3 className="text-success">${price}</h3>
-                        <button className="btn btn-success ml-auto">Book Now</button>
+                        <h3 className="text-success">${cost}</h3>
+                        <button className="btn btn-success ml-auto" onClick={() => handleBookBtn(_id)}>Book Now</button>
                     </div>
                 </div>
             </div>

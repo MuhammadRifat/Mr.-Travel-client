@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { userContext } from '../../App';
 import { firebaseConfigFrameWork, handleFbSignIn, handleGoogleSignIn, handleLogIn, handleSignUp } from './LoginManager';
+import Topnav from '../Home/Header/Topnav/Topnav';
 
 const Login = () => {
     // access firebase config
@@ -30,79 +31,79 @@ const Login = () => {
     // For using sign in with google
     const googleSignIn = () => {
         handleGoogleSignIn()
-        .then(res => {
-            if(res.email){
-                handleLogInUser(res, true);
-            }
-            else{
-                const newUser = {
-                    error: res
+            .then(res => {
+                if (res.email) {
+                    handleLogInUser(res, true);
                 }
-                setLoggedInUser(newUser);
-            }
-        })
+                else {
+                    const newUser = {
+                        error: res
+                    }
+                    setLoggedInUser(newUser);
+                }
+            })
     }
 
     // For using sign in with facebook
     const fbSignIn = () => {
         handleFbSignIn()
-        .then(res => {
-            if(res.email){
-                handleLogInUser(res, true);
-            }
-            else{
-                const newUser = {
-                    error: res
-                }
-                setLoggedInUser(newUser);
-            }
-        })
-    }
-
-    // For using login and signup
-    const handleSubmit = (event) => {
-        if(!newUser && user.email && user.password){
-            setSpinner(true);
-            handleLogIn(user.email, user.password)
             .then(res => {
-                if(res.email){
+                if (res.email) {
                     handleLogInUser(res, true);
                 }
-                else{
+                else {
                     const newUser = {
                         error: res
                     }
                     setLoggedInUser(newUser);
-                    setSpinner(false);
                 }
             })
-        }
-        if(newUser && user.email && user.password && user.confirmPassword){
+    }
+
+    // For using login and signup
+    const handleSubmit = (event) => {
+        if (!newUser && user.email && user.password) {
             setSpinner(true);
-            if(user.password.length === user.confirmPassword.length){
-                handleSignUp(user.name, user.email, user.confirmPassword)
+            handleLogIn(user.email, user.password)
                 .then(res => {
-                    if(res.email){
-                        handleLogInUser(res, false);
-                        const userDetail = {...user};
-                        userDetail.error = "";
-                        setUser(userDetail);
-                        setSpinner(false);
+                    if (res.email) {
+                        handleLogInUser(res, true);
                     }
-                    else{
+                    else {
                         const newUser = {
                             error: res
                         }
                         setLoggedInUser(newUser);
-                        const userDetail = {...user};
-                        userDetail.error = "";
-                        setUser(userDetail);
                         setSpinner(false);
                     }
                 })
+        }
+        if (newUser && user.email && user.password && user.confirmPassword) {
+            setSpinner(true);
+            if (user.password.length === user.confirmPassword.length) {
+                handleSignUp(user.name, user.email, user.confirmPassword)
+                    .then(res => {
+                        if (res.email) {
+                            handleLogInUser(res, false);
+                            const userDetail = { ...user };
+                            userDetail.error = "";
+                            setUser(userDetail);
+                            setSpinner(false);
+                        }
+                        else {
+                            const newUser = {
+                                error: res
+                            }
+                            setLoggedInUser(newUser);
+                            const userDetail = { ...user };
+                            userDetail.error = "";
+                            setUser(userDetail);
+                            setSpinner(false);
+                        }
+                    })
             }
-            else{
-                const userDetail = {...user};
+            else {
+                const userDetail = { ...user };
                 userDetail.error = "Confirm password do not match";
                 setUser(userDetail);
                 setSpinner(false);
@@ -114,23 +115,23 @@ const Login = () => {
     // For accessing user information from input and validating data
     const handleBlur = (event) => {
         let isValid = true;
-        if(event.target.name === 'email'){
-        isValid = /\S+@\S+\.\S+/.test(event.target.value);
+        if (event.target.name === 'email') {
+            isValid = /\S+@\S+\.\S+/.test(event.target.value);
         }
-        if(event.target.name === 'password'){
-        isValid = event.target.value.length >= 6 && /\d{1}/.test(event.target.value);
+        if (event.target.name === 'password') {
+            isValid = event.target.value.length >= 6 && /\d{1}/.test(event.target.value);
         }
-        if(isValid){
-            const newUser = {...user};
+        if (isValid) {
+            const newUser = { ...user };
             newUser[event.target.name] = event.target.value;
-            newUser[event.target.name+"Valid"] = true;
+            newUser[event.target.name + "Valid"] = true;
             setUser(newUser);
-            }
-            else{
-                const newUser = {...user};
-                newUser[event.target.name+"Valid"] = false;
-                setUser(newUser);
-            }    
+        }
+        else {
+            const newUser = { ...user };
+            newUser[event.target.name + "Valid"] = false;
+            setUser(newUser);
+        }
     }
 
     // For using to reduce repetition code
@@ -148,58 +149,61 @@ const Login = () => {
     }
 
     // Conditionally showing log in and create new account button
-    const handleLogInOrCreate = () =>{
+    const handleLogInOrCreate = () => {
         setNewUser(!newUser);
-        const newLoggedInUser = {...loggedInUser};
+        const newLoggedInUser = { ...loggedInUser };
         newLoggedInUser.error = '';
         setLoggedInUser(newLoggedInUser);
-        const userDetail = {...user};
+        const userDetail = { ...user };
         userDetail.error = '';
         setUser(userDetail);
     }
     return (
-        <Container>
-            <Row className="justify-content-md-center">
-                <Col md={6} className="mt-4">
-                    <div className="bg-white p-4" style={{border:'2px solid lightgray', borderRadius:'5px'}}>
-                        {newUser ? <h4>Create an account</h4> : <h4>Log In</h4>}
-                        {
-                            user.error && <h6 style={{color: 'red', textAlign: 'center', marginTop:'10px'}}>{user.error}</h6>
-                        }
-                        {
-                            loggedInUser.error && <h6 style={{color: 'red', textAlign: 'center', marginTop:'10px'}}>{loggedInUser.error}</h6>
-                        }
-                        {
-                            loggedInUser.email && <h6 style={{color: 'green', textAlign: 'center', marginTop:'10px'}}>Sign up successful</h6>
-                        }
-                        <form className="login-form" onSubmit={handleSubmit}>
+        <Container fluid>
+            <Topnav></Topnav>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col md={6} className="mt-4">
+                        <div className="bg-white p-4" style={{ border: '2px solid lightgray', borderRadius: '5px' }}>
+                            {newUser ? <h4>Create an account</h4> : <h4>Log In</h4>}
                             {
-                                spinner && <Spinner className="text-center" animation="border" />
+                                user.error && <h6 style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>{user.error}</h6>
                             }
                             {
-                                newUser && <input type="text" onBlur={handleBlur} name="name" placeholder="Name" required/>
+                                loggedInUser.error && <h6 style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>{loggedInUser.error}</h6>
                             }
-                            <br/><input type="text" onBlur={handleBlur} name="email" placeholder="Email" required/><br/>
-                            {!user.emailValid && <span style={{color:'red'}}>Enter a valid email</span>}
-                            <input type="password" onBlur={handleBlur} name="password" placeholder="Password" required/><br/>
-                            {!user.passwordValid && <span style={{color:'red'}}>Enter a valid password (at least 6 character and number)</span>}
                             {
-                                newUser && <input type="password" onBlur={handleBlur} name="confirmPassword" placeholder="Confirm password" required/>
+                                loggedInUser.email && <h6 style={{ color: 'green', textAlign: 'center', marginTop: '10px' }}>Sign up successful</h6>
                             }
-                            <br/><input id="submit-btn" type="submit" value={newUser ? "Create an account" : "Login"}/>
-                        </form>
-                        <h6 className="mt-3 text-center">{newUser ? <span>Already have an account?<button className="create-btn" onClick={() => handleLogInOrCreate()}>Login</button></span> : <span>Don't have an account? <button className="create-btn" onClick={() => handleLogInOrCreate()}>Create an account</button></span>}</h6>
-                    </div>
-                    <hr/>
-                    <h5 className="text-center">Or</h5>
-                    <hr/>
-                    <div className="text-center social-btn">
-                    <button onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} size="lg"/> Continue With Google</button><br/>
-                    <button onClick={fbSignIn}><FontAwesomeIcon icon={faFacebook} size="lg"/> Continue With Facebook</button>
-                    </div>
-                    
-                </Col>
-            </Row>
+                            <form className="login-form" onSubmit={handleSubmit}>
+                                {
+                                    spinner && <Spinner className="text-center" animation="border" />
+                                }
+                                {
+                                    newUser && <input type="text" onBlur={handleBlur} name="name" placeholder="Name" required />
+                                }
+                                <br /><input type="text" onBlur={handleBlur} name="email" placeholder="Email" required /><br />
+                                {!user.emailValid && <span style={{ color: 'red' }}>Enter a valid email</span>}
+                                <input type="password" onBlur={handleBlur} name="password" placeholder="Password" required /><br />
+                                {!user.passwordValid && <span style={{ color: 'red' }}>Enter a valid password (at least 6 character and number)</span>}
+                                {
+                                    newUser && <input type="password" onBlur={handleBlur} name="confirmPassword" placeholder="Confirm password" required />
+                                }
+                                <br /><input id="submit-btn" type="submit" value={newUser ? "Create an account" : "Login"} />
+                            </form>
+                            <h6 className="mt-3 text-center">{newUser ? <span>Already have an account?<button className="create-btn" onClick={() => handleLogInOrCreate()}>Login</button></span> : <span>Don't have an account? <button className="create-btn" onClick={() => handleLogInOrCreate()}>Create an account</button></span>}</h6>
+                        </div>
+                        <hr />
+                        <h5 className="text-center">Or</h5>
+                        <hr />
+                        <div className="text-center social-btn">
+                            <button onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} size="lg" /> Continue With Google</button><br />
+                            <button onClick={fbSignIn}><FontAwesomeIcon icon={faFacebook} size="lg" /> Continue With Facebook</button>
+                        </div>
+
+                    </Col>
+                </Row>
+            </Container>
         </Container>
     );
 };
