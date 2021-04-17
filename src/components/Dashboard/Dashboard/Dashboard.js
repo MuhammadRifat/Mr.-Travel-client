@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './Dashboard.css';
 import { Col, Container, Row } from "react-bootstrap";
 import {
@@ -8,63 +8,102 @@ import {
     Link
 } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTasks, faPlus, faEdit, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faTasks, faPlus, faEdit, faBars, faArrowLeft, faFileMedical } from '@fortawesome/free-solid-svg-icons'
 import OrderList from "../OrderList/OrderList";
 import AddTour from "../AddTour/AddTour";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import ManageTours from "../ManageTours/ManageTours";
+import BookingList from "../BookingList/BookingList";
+import Review from "../Review/Review";
+import { userContext } from "../../../App";
+import NotFound from "../../NotFound/NotFound";
+import Home from "../../Home/Home/Home";
+import Topnav from "../../Home/Header/Topnav/Topnav";
 
-// For creating sidenav with react router
-const routes = [
-    {
-        path: "/dashboard",
-        exact: true,
-        sidebar: () => "",
-        main: () => <OrderList />
-    },
-    {
-        path: "/dashboard/order-list",
-        exact: true,
-        sidebar: () => "",
-        main: () => <OrderList />
-    },
-    {
-        path: "/dashboard/add-tour",
-        sidebar: () => "",
-        main: () => <AddTour />
-    },
-    {
-        path: "/dashboard/make-admin",
-        sidebar: () => "",
-        main: () => <MakeAdmin />
-    },
-    {
-        path: "/dashboard/manage-tours",
-        sidebar: () => "",
-        main: () => <ManageTours />
-    }
-];
 
 const Dashboard = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/isAdmin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: loggedInUser.email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const newUser = { ...loggedInUser };
+                newUser.isAdmin = data;
+                newUser.isSimpleUser = !data;
+                setLoggedInUser(newUser);
+            })
+    }, [])
+
+    // For creating sidenav with react router
+    const routes = [
+        {
+            path: "/dashboard",
+            exact: true,
+            sidebar: () => "",
+            main: () => <BookingList />
+        },
+        {
+            path: "/dashboard/add-tour",
+            sidebar: () => "",
+            main: () => loggedInUser.isAdmin && <AddTour /> || <NotFound />
+        },
+        {
+            path: "/dashboard/make-admin",
+            sidebar: () => "",
+            main: () => loggedInUser.isAdmin && <MakeAdmin /> || <NotFound />
+        },
+        {
+            path: "/dashboard/manage-tours",
+            sidebar: () => "",
+            main: () => loggedInUser.isAdmin && <ManageTours /> || <NotFound />
+        },
+        {
+            path: "/dashboard/booking-list",
+            sidebar: () => "",
+            main: () => <BookingList />
+        },
+        {
+            path: "/dashboard/review",
+            sidebar: () => "",
+            main: () => loggedInUser.isSimpleUser && <Review /> || <NotFound />
+        }
+    ];
     return (
+        <>
+        <Topnav></Topnav>
+        <hr/>
         <Router>
             <Container fluid>
                 <Row>
                     <Col md={2} className="admin-menu">
                         <div>
                             <ul className="mt-4" style={{ listStyleType: "none", padding: 0 }}>
-                                <Link className="link" to="/dashboard/order-list">
-                                    <li><FontAwesomeIcon icon={faBars} /> Order List</li>
+                                <Link className="link" to="/dashboard/booking-list">
+                                    <li><FontAwesomeIcon icon={faBars} /> Booking List</li>
                                 </Link>
-                                <Link className="link" to="/dashboard/add-tour">
-                                    <li><FontAwesomeIcon icon={faPlus} /> Add Tour</li>
-                                </Link>
-                                <Link className="link" to="/dashboard/make-admin">
-                                    <li><FontAwesomeIcon icon={faEdit} /> Make Admin</li>
-                                </Link>
-                                <Link className="link" to="/dashboard/manage-tours">
-                                    <li><FontAwesomeIcon icon={faTasks} /> Manage Tours</li>
-                                </Link>
+                                {loggedInUser.isAdmin && <div>
+                                    <Link className="link" to="/dashboard/add-tour">
+                                        <li><FontAwesomeIcon icon={faPlus} /> Add Tour</li>
+                                    </Link>
+                                    <Link className="link" to="/dashboard/make-admin">
+                                        <li><FontAwesomeIcon icon={faEdit} /> Make Admin</li>
+                                    </Link>
+                                    <Link className="link" to="/dashboard/manage-tours">
+                                        <li><FontAwesomeIcon icon={faTasks} /> Manage Tours</li>
+                                    </Link>
+                                </div>}
+
+                                {loggedInUser.isSimpleUser && <Link className="link" to="/dashboard/review">
+                                    <li><FontAwesomeIcon icon={faFileMedical} /> Review</li>
+                                </Link>}
                             </ul>
 
                             <Switch>
@@ -97,6 +136,7 @@ const Dashboard = () => {
                 </Row>
             </Container>
         </Router>
+        </>
     );
 };
 

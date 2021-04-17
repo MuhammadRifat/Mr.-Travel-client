@@ -51,6 +51,7 @@ const BookingForm = () => {
             tour: tourData,
             bookingUser: shipmentData,
             paymentId,
+            status: 'Pending',
             bookingTime: new Date()
         };
 
@@ -64,7 +65,7 @@ const BookingForm = () => {
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    alert("Booking placed successfully!");
+                    history.push('/dashboard/booking-list');
                 }
             })
     }

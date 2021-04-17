@@ -1,48 +1,57 @@
 import React from 'react';
+import { useState } from 'react';
 import { Col, Form, InputGroup, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import './Main.css';
 
 const Main = () => {
+    const [search, setSearch] = useState({});
+    const handleBlur = (e) => {
+        const newData = { ...search };
+        newData[e.target.name] = e.target.value;
+        setSearch(newData);
+    }
+
+    const history = useHistory();
+    const handleSubmit = (e) => {
+        history.push(`/destinations?destination=${search.destination}&type=${search.type}`);
+
+        e.preventDefault();
+    }
     return (
-        <div className="form p-3">
+        <div className="form p-2">
             <Form>
-                <Row>
-                    <Col md={7}>
+                <Row className="mt-3">
+                    <Col md={5}>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Control as="select" custom>
-                                <option selected  disabled>Destination</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </Form.Control>
+                            <select name="destination" className="form-control" onBlur={handleBlur}>
+                                <option selected disabled>Destination</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="France">France</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Netherland">Netherland</option>
+                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="UK">UK</option>
+                                <option value="USA">USA</option>
+                            </select>
                         </Form.Group>
                     </Col>
                     <Col md={5}>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Control as="select" custom>
+                            <select name="type" className="form-control" onBlur={handleBlur}>
                                 <option selected disabled>Tour type</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </Form.Control>
+                                <option value="Adventure Travel">Adventure Travel</option>
+                                <option value="Beaches & Islands">Beaches & Islands</option>
+                                <option value="Family Tours">Family Tours</option>
+                                <option value="History & Culture">History & Culture</option>
+                                <option value="Nature & wildlife">Nature & wildlife</option>
+                            </select>
                         </Form.Group>
                     </Col>
-                </Row>
-                <Row>
-                    <Col md={7}>
-                        <InputGroup>
-                            <InputGroup.Prepend>
-                                <InputGroup.Text>Tour start date</InputGroup.Text>
-                            </InputGroup.Prepend>
-                            <Form.Control type="date" placeholder="Select date" />
-                        </InputGroup>
-                    </Col>
-                    <Col md={5}>
-                        <button className="btn btn-primary btn-block">Search</button>
+                    <Col md={2}>
+                        <button onClick={handleSubmit} className="btn btn-primary btn-block">Search</button>
                     </Col>
                 </Row>
             </Form>

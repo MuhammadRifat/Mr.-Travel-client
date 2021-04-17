@@ -12,6 +12,8 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 import BookingForm from './components/Home/Tours/BookingForm/BookingForm';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AllTour from './components/AllTour/AllTour';
+import AllDestinations from './components/AllDestinations/AllDestinations';
 
 export const userContext = createContext();
 
@@ -25,9 +27,15 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
+          <Route path="/tours">
+            <AllTour />
           </Route>
+          <Route path="/destinations">
+            <AllDestinations />
+          </Route>
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
+          </PrivateRoute>
           <PrivateRoute path="/booking-form/:id">
             <BookingForm />
           </PrivateRoute>

@@ -1,32 +1,49 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import DestinationDetail from './DestinationDetail';
 
 const Destination = () => {
     const types = [
         {
+            id: 1,
             name: 'Adventure Travel',
-            icon: 'faMountain',
-            image: 'https://thumbs.dreamstime.com/b/target-achievement-mountain-adventure-taurus-mountains-altitude-meter-61542260.jpg'
+            image: 'https://i.ibb.co/NpWQ1qg/adventure-1.jpg'
         },
         {
-            name: 'Beach and Islands',
-            icon: 'faMountain',
-            image: ''
+            id: 2,
+            name: 'Beach & Islands',
+            image: 'https://i.ibb.co/Syk28d5/beach-1.jpg'
         },
         {
-            name: 'Adventure Travel',
-            icon: 'faMountain',
-            image: ''
+            id: 3,
+            name: 'Family Tours',
+            image: 'https://i.ibb.co/jHL2bgY/family-1.jpg'
         },
+        {
+            id: 4,
+            name: 'History & Culture',
+            image: 'https://i.ibb.co/mtDJdGL/history-1.jpg'
+        },
+        {
+            id: 5,
+            name: 'Nature & wildlife',
+            image: 'https://i.ibb.co/fvtpXhp/wildlife-1.jpg'
+        }
     ];
+
+    const history = useHistory();
+    const handleDiscoverBtn = (id) => {
+        const typeData = types.find( type => type.id === id);
+        history.push(`/destinations?destination=ALL&type=${typeData.name}`);
+    }
     return (
         <Container>
             <h1 className="mt-5 text-center">Discover Spotlight Destinations</h1>
             <hr/>
             <Row className="justify-content-md-center mt-4">
                 {
-                    types.map(type => <DestinationDetail type={type}></DestinationDetail>)
+                    types.map(type => <DestinationDetail type={type} handleDiscoverBtn={handleDiscoverBtn} key={type.id}></DestinationDetail>)
                 }
             </Row>
         </Container>

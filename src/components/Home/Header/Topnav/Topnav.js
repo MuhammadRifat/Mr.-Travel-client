@@ -23,10 +23,10 @@ const Topnav = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ml-auto">
                         <Link className="link" to="/home">Home </Link>
+                        <Link className="link" to="/tours">Tours </Link>
+                        <Link className="link" to="/destinations">Destinations </Link>
                         <Link className="link" to="/about">About us </Link>
-                        <Link className="link" to="/projects">Projects </Link>
-                        <Link className="link" to="/contact">Contact </Link>
-                        <Link className="link" to="/admin">Admin </Link>
+                        <Link className="link" to="/dashboard">Dashboard </Link>
                         {/* Dynamically change login button to user image */}
                         {
                             loggedInUser.email ? <Image src={loggedInUser.photo} alt="" style={{ width: '40px', height: '40px', marginRight: '60px' }} roundedCircle /> : <Link className="link" to="/login"><button id="login-btn">Login</button></Link>
