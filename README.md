@@ -1,71 +1,23 @@
-# Getting Started with Create React App
+# Mr. Travel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+1. This website contain a navigation bar in the top so that user easily going to any page.
+2. Shows header section with a banner image, title and search option in home page.
+3. Then, shows Spotlight Destinations section for discovering any destinations.
+4. Then, shows tours section for booking any tours. All tours div contain a Book Now button, When click this button, user can booked his/her wanted tour. Reviews of users shows after tours section and travel guide and tips shows after reviews/testimonials section. The footer section is located in the bottom of homepage.
+5. Set private route in Book Now button so that unfamiliar person cannot booked tour.
+6. It has log in option.
+7. It has Sign up option.
+8. User also sign up with Google and Facebook.
+9. Show spinner when load data from database and user logged In or Sign Up in this website.
+10. It contains a search box for tours search. User can search tours by tour title or any character.
+11. It has a Dashboard. User can see a booking list his/her bookings and can add review in this page. And Admin can see a booking list of all booking user. Admin can also add tour, managing tour and making another admin in this page.
+12. Admin can change status of booking tours of user from the Dashboard.
+13. In this website used some hooks for making dynamic and spontaneous.
+14. Used firebase authentication for more secured and protected.
+15. In this website using react-bootstrap for better designing and responsiveness.
+16. Used react router and private route for more efficient and good performance.
+Finally, in this website, used node js for controlling server side and create many API for store, load, update and delete tours from mongodb database.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# complete-website-client-MuhammadRifat
+### WebSite Link
+https://mr-travel-simple.web.app/

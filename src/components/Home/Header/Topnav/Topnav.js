@@ -11,7 +11,7 @@ const Topnav = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     return (
         <Container>
-            <Navbar collapseOnSelect expand="lg" variant="dark">
+            <Navbar collapseOnSelect expand="lg">
                 <Navbar.Brand href="#">
                     <img
                         src={logo}
