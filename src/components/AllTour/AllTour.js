@@ -62,7 +62,7 @@ const AllTour = () => {
                 {
                     !spinner && !tours.length && <p className="text-center text-danger mt-4">Not Found</p>
                 }
-                <Row className="justify-content-md-center mt-3">
+                <Row className="justify-content-md-center mt-3 mb-4">
                     {
                         tours.map(tour => <ToursDetail tour={tour} handleBookBtn={handleBookBtn} key={tour._id}></ToursDetail>)
                     }
