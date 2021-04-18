@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { userContext } from '../../../../App';
 import './Topnav.css';
 import logo from '../../../../images/default-monochrome.svg';
+import avatarIcon from '../../../../images/avater.png';
 
 // Top bar of this Website
 const Topnav = () => {
@@ -30,7 +31,7 @@ const Topnav = () => {
                         <Link className="link" to="/dashboard">Dashboard </Link>
                         {/* Dynamically change login button to user image */}
                         {
-                            loggedInUser.email ? <Image src={loggedInUser.photo} alt="" style={{ width: '40px', height: '40px', marginRight: '60px' }} roundedCircle /> : <Link className="link" to="/login"><button id="login-btn">Login</button></Link>
+                            loggedInUser.email ? <Image src={loggedInUser.photo || avatarIcon} alt="" style={{ width: '40px', height: '40px', marginRight: '60px' }} roundedCircle /> : <Link className="link" to="/login"><button id="login-btn">Login</button></Link>
                         }
                     </Nav>
                 </Navbar.Collapse>
