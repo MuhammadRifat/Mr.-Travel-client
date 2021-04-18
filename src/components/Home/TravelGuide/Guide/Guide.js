@@ -4,6 +4,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import './Guide.css';
 
+// For creating to show Travel guide
 const Guide = ({advice, handleContinueBtn}) => {
     const {title, date, image, id} = advice; 
     return (

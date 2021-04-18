@@ -11,8 +11,9 @@ import { Link } from 'react-router-dom';
 const Tours = () => {
     const [tours, setTours] = useState([]);
 
+    // Load all tours data from database
     useEffect( () => {
-        fetch('http://localhost:5000/tours')
+        fetch('https://blooming-plateau-30647.herokuapp.com/tours')
         .then(res => res.json())
         .then(data => setTours(data))
     }, [])
@@ -22,6 +23,7 @@ const Tours = () => {
         history.push(`/booking-form/${id}`);
     }
 
+    // For handling Explore button
     const handleExplore = () => {
         history.push('/tours');
     }

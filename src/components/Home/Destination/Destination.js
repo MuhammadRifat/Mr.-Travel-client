@@ -4,6 +4,8 @@ import { useHistory } from 'react-router';
 import DestinationDetail from './DestinationDetail';
 
 const Destination = () => {
+
+    // Fake data for Discover Spotlight Destinations
     const types = [
         {
             id: 1,
@@ -33,6 +35,8 @@ const Destination = () => {
     ];
 
     const history = useHistory();
+
+    // For handling Discover Button
     const handleDiscoverBtn = (id) => {
         const typeData = types.find(type => type.id === id);
         history.push(`/destinations?destination=ALL&type=${typeData.name}`);

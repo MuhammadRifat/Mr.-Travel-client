@@ -161,6 +161,7 @@ const Login = () => {
     return (
         <Container fluid>
             <Topnav></Topnav>
+            <hr/>
             <Container>
                 <Row className="justify-content-md-center">
                     <Col md={6} className="mt-4">

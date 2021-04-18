@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTasks, faPlus, faEdit, faBars, faArrowLeft, faFileMedical } from '@fortawesome/free-solid-svg-icons'
-import OrderList from "../OrderList/OrderList";
 import AddTour from "../AddTour/AddTour";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import ManageTours from "../ManageTours/ManageTours";
@@ -17,15 +16,15 @@ import BookingList from "../BookingList/BookingList";
 import Review from "../Review/Review";
 import { userContext } from "../../../App";
 import NotFound from "../../NotFound/NotFound";
-import Home from "../../Home/Home/Home";
 import Topnav from "../../Home/Header/Topnav/Topnav";
 
 
 const Dashboard = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
+    // checking logged in User admin or not
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/isAdmin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

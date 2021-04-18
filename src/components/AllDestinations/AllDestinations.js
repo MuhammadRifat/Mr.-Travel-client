@@ -7,6 +7,8 @@ import Topnav from '../Home/Header/Topnav/Topnav';
 import ToursDetail from '../Home/Tours/ToursDetail';
 
 const AllDestinations = () => {
+
+    // For getting url query
     const search = window.location.search;
     const params = new URLSearchParams(search);
     const destination = params.get('destination');
@@ -15,9 +17,10 @@ const AllDestinations = () => {
     const [tours, setTours] = useState([]);
     const [spinner, setSpinner] = useState(false);
 
+    // Load tours data from database whin searching destination and tour type
     useEffect(() => {
         setSpinner(true);
-        fetch('http://localhost:5000/toursByDestination', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/toursByDestination', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,6 +35,8 @@ const AllDestinations = () => {
     }, [])
 
     const history = useHistory();
+
+    // For booking tour
     const handleBookBtn = (id) => {
         history.push(`/booking-form/${id}`);
     }

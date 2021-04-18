@@ -9,15 +9,17 @@ const MakeAdmin = () => {
     });
     const [spinner, setSpinner] = useState(false);
 
+    // For getting form data
     const handleBlur = (e) => {
         const newData = {...adminData};
         newData[e.target.name] = e.target.value;
         setAdminData(newData);
     }
 
+    //For uploading admin data to the database
     const handleSubmit = (e) => {
         setSpinner(true);
-        fetch(`http://localhost:5000/addAdmin`, {
+        fetch(`https://blooming-plateau-30647.herokuapp.com/addAdmin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

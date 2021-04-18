@@ -6,12 +6,14 @@ const AddTour = () => {
     const [tourData, setTourData] = useState({});
     const [spinner, setSpinner] = useState(false);
 
+    // For getting data from form
     const handleBlur = (e) => {
         const newData = { ...tourData };
         newData[e.target.name] = e.target.value;
         setTourData(newData);
     }
 
+    // For uploading image in imgbb website
     const handleImageUpload = event => {
         const imageData = new FormData();
         imageData.set('key', 'c4ebb744a3b647feb62c85c668dcb1fa');
@@ -31,9 +33,10 @@ const AddTour = () => {
 
     }
 
+    // For uploading tour data to the database
     const handleSubmit = (e) => {
         setSpinner(true);
-        fetch(`http://localhost:5000/addTour`, {
+        fetch(`https://blooming-plateau-30647.herokuapp.com/addTour`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

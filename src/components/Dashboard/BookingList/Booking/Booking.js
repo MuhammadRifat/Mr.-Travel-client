@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons'
 
+// For showing all bookings of users
 const Booking = ({booking, status}) => {
     const {title, imageUrl, location, time} = booking;
     return (

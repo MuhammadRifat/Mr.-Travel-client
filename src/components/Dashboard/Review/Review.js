@@ -12,14 +12,16 @@ const Review = () => {
         date: new Date()
     });
 
+    // For capturing form data
     const handleBlur = (e) => {
         const newReview = {...userReview};
         newReview[e.target.name] = e.target.value;
         setUserReview(newReview);
     }
 
+    // For uploading user review to the database
     const handleSubmit = (e) => {
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/addReview', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

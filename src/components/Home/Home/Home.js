@@ -6,6 +6,7 @@ import Testimonials from '../Testimonials/Testimonials';
 import Tours from '../Tours/Tours';
 import TravelGuide from '../TravelGuide/TravelGuide';
 
+// Homepage of this Website
 const Home = () => {
     return (
         <div>

@@ -4,6 +4,8 @@ import { useHistory } from 'react-router';
 import Guide from './Guide/Guide';
 
 const TravelGuide = () => {
+
+    // Fake data for Travel guide
     const advices = [
         {
             id: 1,
@@ -26,6 +28,8 @@ const TravelGuide = () => {
     ];
 
     const history = useHistory();
+    
+    // For handling Continue button
     const handleContinueBtn = (id) => {
         history.push(`/travel-guide?id=${id}`);
     }

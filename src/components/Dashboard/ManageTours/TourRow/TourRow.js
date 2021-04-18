@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import './TourRow.css';
 
+// For creating to show all tours for manage
 const TourRow = ({ tour, handleDelete, handleEdit }) => {
     const {title, location, time, cost, _id} = tour;
     return (

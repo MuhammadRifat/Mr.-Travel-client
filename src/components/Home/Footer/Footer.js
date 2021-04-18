@@ -5,6 +5,7 @@ import { faMapMarkerAlt, faEnvelope, faPhoneAlt } from '@fortawesome/free-solid-
 import { faFacebook, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
 
+// Homepage Footer
 const Footer = () => {
     return (
         <Container fluid className="bg-dark mt-5 text-white">

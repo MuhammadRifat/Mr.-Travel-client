@@ -1,5 +1,6 @@
 import React from 'react';
 
+// For Showing all booking user list
 const BookingUser = ({booking, handleStatusClick}) => {
     const {bookingUser, tour, paymentId, _id, status} = booking;
 

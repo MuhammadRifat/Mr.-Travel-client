@@ -4,8 +4,11 @@ import { Col, Form, InputGroup, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import './Main.css';
 
+// Homepage Header main element
 const Main = () => {
     const [search, setSearch] = useState({});
+
+    // For capturing form data
     const handleBlur = (e) => {
         const newData = { ...search };
         newData[e.target.name] = e.target.value;
@@ -13,6 +16,8 @@ const Main = () => {
     }
 
     const history = useHistory();
+
+    // For searching tours by destination and tour type
     const handleSubmit = (e) => {
         history.push(`/destinations?destination=${search.destination}&type=${search.type}`);
 

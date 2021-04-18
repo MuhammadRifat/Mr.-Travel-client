@@ -24,27 +24,30 @@ const BookingForm = () => {
     });
     const [spinner, setSpinner] = useState(false);
 
+    // Load tour data from database by id
     useEffect(() => {
-        fetch(`http://localhost:5000/tourById/${id}`)
+        fetch(`https://blooming-plateau-30647.herokuapp.com/tourById/${id}`)
             .then(res => res.json())
             .then(data => {
                 setTourData(data);
             })
     }, [])
 
+    // For capturing user data
     const handleBlur = (e) => {
         const newData = { ...user };
         newData[e.target.name] = e.target.value;
         setUser(newData);
     }
 
-    // For adding order product and customer details into the database
+    // Conditionally showing Pay process
     const handleSubmit = (e) => {
         setShipmentData(user);
 
         e.preventDefault();
     };
 
+    // For uploading booking data and user details into the database
     const handlePaymentSuccess = paymentId => {
         const userDetails = {
             ...loggedInUser,
@@ -55,7 +58,7 @@ const BookingForm = () => {
             bookingTime: new Date()
         };
 
-        fetch('http://localhost:5000/addBooking', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/addBooking', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

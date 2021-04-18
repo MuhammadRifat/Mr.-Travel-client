@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import ToursDetail from '../Home/Tours/ToursDetail';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import Topnav from '../Home/Header/Topnav/Topnav';
 
@@ -12,9 +10,10 @@ const AllTour = () => {
     const [tours, setTours] = useState([]);
     const [spinner, setSpinner] = useState(false);
 
+    // Load all tours from database
     useEffect(() => {
         setSpinner(true);
-        fetch('http://localhost:5000/tours')
+        fetch('https://blooming-plateau-30647.herokuapp.com/tours')
             .then(res => res.json())
             .then(data => {
                 setTours(data);
@@ -23,12 +22,15 @@ const AllTour = () => {
     }, [])
 
     const history = useHistory();
+
+    // For booking tour
     const handleBookBtn = (id) => {
         history.push(`/booking-form/${id}`);
     }
 
+    // For Searching tours
     const handleSearch = (e) => {
-        fetch('http://localhost:5000/tourSearch', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/tourSearch', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

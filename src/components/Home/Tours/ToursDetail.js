@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faClock, faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import './styles.css'
 
+// For creating to show tours data
 const ToursDetail = ({ tour, handleBookBtn }) => {
     const { title, location, time, cost, imageUrl, _id } = tour;
     return (

@@ -5,6 +5,7 @@ import SimpleCardForm from '../SimpleCardForm/SimpleCardForm';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
+// Pay process with Stripe
 const PayProcess = ({handlePayment}) => {
     return (
         <Elements stripe={stripePromise}>

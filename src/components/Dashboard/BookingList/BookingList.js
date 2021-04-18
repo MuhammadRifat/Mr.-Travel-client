@@ -9,9 +9,10 @@ const BookingList = () => {
     const [bookings, setBookings] = useState([]);
     const [spinner, setSpinner] = useState(false);
 
+    // Load all bookings data from the database
     useEffect(() => {
         setSpinner(true);
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/bookings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: loggedInUser.email, isAdmin: loggedInUser.isAdmin })
@@ -23,9 +24,10 @@ const BookingList = () => {
             })
     }, [])
 
+    // For changing status on a booked tour
     const handleStatusClick = (e, id) => {
         setSpinner(true);
-        fetch('http://localhost:5000/updateBooking', {
+        fetch('https://blooming-plateau-30647.herokuapp.com/updateBooking', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,12 +47,15 @@ const BookingList = () => {
             {
                 spinner && <div className="text-center mt-3"><Spinner animation="border" /></div>
             }
+
+            {/* Conditionally show dashboard between Admin and simple User */}
             {loggedInUser.isSimpleUser && <Row>
                 {
                     bookings.map(booking => <Booking booking={booking.tour} status={booking.status} key={booking._id}></Booking>)
                 }
             </Row>}
 
+            {/* Conditionally show dashboard between Admin and simple User */}
             {loggedInUser.isAdmin &&
                 <Table responsive="md" className="bg-white border">
                     <thead>

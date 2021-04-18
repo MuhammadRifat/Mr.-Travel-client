@@ -2,10 +2,10 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import adventureImg from '../../../images/adventure.jpg';
 import './DestinationDetail.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
+// Create for showing all Spotlight Destinations
 const DestinationDetail = ({ type, handleDiscoverBtn }) => {
     const { name, image, id } = type;
     return (

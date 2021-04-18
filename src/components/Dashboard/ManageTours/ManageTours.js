@@ -12,7 +12,7 @@ const ManageTours = () => {
     // Load all tours for managing
     useEffect(() => {
         setSpinner(true);
-        fetch('http://localhost:5000/tours')
+        fetch('https://blooming-plateau-30647.herokuapp.com/tours')
             .then(res => res.json())
             .then(data => {
                 setTours(data);
@@ -20,11 +20,12 @@ const ManageTours = () => {
             })
     }, [])
 
+    // For deleting tour from the database
     const handleDelete = (id) => {
         const newTours = tours.filter(tour => tour._id != id);
         setTours(newTours);
 
-        fetch(`http://localhost:5000/deleteTour/${id}`, {
+        fetch(`https://blooming-plateau-30647.herokuapp.com/deleteTour/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

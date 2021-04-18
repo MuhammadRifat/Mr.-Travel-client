@@ -6,6 +6,7 @@ import { userContext } from '../../../../App';
 import './Topnav.css';
 import logo from '../../../../images/default-monochrome.svg';
 
+// Top bar of this Website
 const Topnav = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     return (

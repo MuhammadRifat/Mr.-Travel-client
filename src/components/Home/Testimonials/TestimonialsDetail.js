@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import icon from '../../../images/avater.png';
 
+// For showing all reviews in the homepage
 const TestimonialsDetail = ({testimonial}) => {
     const {name, photo, country, description} = testimonial;
     return (
