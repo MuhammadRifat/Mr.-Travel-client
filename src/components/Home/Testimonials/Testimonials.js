@@ -18,7 +18,7 @@ const Testimonials = () => {
                 <h1 className="text-center text-white pt-3">Testimonials</h1><hr/>
                 <Row className="justify-content-md-center pb-4">
                     {
-                        testimonials.slice(0, 3)?.map(testimonial => <TestimonialsDetail testimonial={testimonial}></TestimonialsDetail>)
+                        testimonials?.map(testimonial => <TestimonialsDetail testimonial={testimonial}></TestimonialsDetail>)
                     }
                 </Row>
                 <hr />
