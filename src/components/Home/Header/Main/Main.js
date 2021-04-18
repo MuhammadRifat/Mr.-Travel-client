@@ -51,7 +51,7 @@ const Main = () => {
                         </Form.Group>
                     </Col>
                     <Col md={2}>
-                        <button onClick={handleSubmit} className="btn btn-primary btn-block">Search</button>
+                        <button onClick={handleSubmit} className="btn btn-dark btn-block">Search</button>
                     </Col>
                 </Row>
             </Form>

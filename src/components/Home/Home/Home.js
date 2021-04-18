@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header/Header';
 import Testimonials from '../Testimonials/Testimonials';
 import Tours from '../Tours/Tours';
+import TravelGuide from '../TravelGuide/TravelGuide';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Destination></Destination>
             <Tours></Tours>
             <Testimonials></Testimonials>
+            <TravelGuide></TravelGuide>
             <Footer></Footer>
         </div>
     );

@@ -34,18 +34,19 @@ const Destination = () => {
 
     const history = useHistory();
     const handleDiscoverBtn = (id) => {
-        const typeData = types.find( type => type.id === id);
+        const typeData = types.find(type => type.id === id);
         history.push(`/destinations?destination=ALL&type=${typeData.name}`);
     }
     return (
-        <Container>
-            <h1 className="mt-5 text-center">Discover Spotlight Destinations</h1>
-            <hr/>
-            <Row className="justify-content-md-center mt-4">
+        <Container fluid style={{ backgroundColor: 'rgb(4, 49, 4)' }}>
+            <h1 className="pt-5 text-center text-white">Discover Spotlight Destinations</h1>
+            <hr />
+            <Row className="justify-content-md-center">
                 {
                     types.map(type => <DestinationDetail type={type} handleDiscoverBtn={handleDiscoverBtn} key={type.id}></DestinationDetail>)
                 }
             </Row>
+            <hr />
         </Container>
     );
 };

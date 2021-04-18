@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "firebase": "^8.4.1",
+    "mdbreact": "^5.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-datepicker": "^3.7.0",
@@ -23,6 +24,7 @@
     "react-hook-form": "^7.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-spring": "^9.1.1",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

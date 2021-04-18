@@ -1,0 +1,23 @@
+.column {
+	display: inline-block;
+	text-align: center;
+}
+
+figure {
+	overflow: hidden;
+}
+
+.column img{
+  width: 100%;
+  height: 300px;
+}
+.column#zoomIn img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.column#zoomIn:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}

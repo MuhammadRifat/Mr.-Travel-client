@@ -1,20 +1,22 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import adventureImg from '../../../images/adventure.jpg';
+import './DestinationDetail.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-const DestinationDetail = ({type, handleDiscoverBtn}) => {
+const DestinationDetail = ({ type, handleDiscoverBtn }) => {
     const { name, image, id } = type;
     return (
-        <Col md={4}>
-            <div className="d-flex align-items-center justify-content-center border rounded shadow mt-3" style={{ backgroundImage: `url(${image || adventureImg})`, backgroundSize: 'cover', height: '300px' }}>
-                <div className="text-center" style={{color:'rgb(1, 26, 1)'}}>
-                    <h3>{name}</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quisquam!</p>
-                    <button onClick={() => handleDiscoverBtn(id)} className="btn btn-secondary mt-2">Discover <FontAwesomeIcon icon={faArrowRight}/></button>
-                </div>
+        <Col md={4} className="frame">
+            <div className="mt-3">
+            <img src={image || adventureImg} className="rounded border shadow" alt="" />
+            <h3 className="centered text-white">{name}</h3>
+            <div className="text-center rounded details" style={{ color: 'rgb(1, 26, 1)' }}>
+                <h4>{name}</h4>
+                <button onClick={() => handleDiscoverBtn(id)} className="btn btn-outline-dark mt-4">Discover <FontAwesomeIcon icon={faArrowRight} /></button>
+            </div>
             </div>
         </Col>
     );

@@ -83,7 +83,7 @@ const Dashboard = () => {
         <Router>
             <Container fluid>
                 <Row>
-                    <Col md={2} className="admin-menu">
+                    <Col md={2} className="admin-menu rounded">
                         <div>
                             <ul className="mt-4" style={{ listStyleType: "none", padding: 0 }}>
                                 <Link className="link" to="/dashboard/booking-list">

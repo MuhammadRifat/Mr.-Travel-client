@@ -47,6 +47,9 @@ const AllDestinations = () => {
                 {
                     spinner && <div className="text-center mt-3"><Spinner animation="border" /></div>
                 }
+                {
+                    !spinner && !tours.length && <p className="text-center text-danger mt-4">Not Found</p>
+                }
                 <Row className="justify-content-md-center">
                     {
                         tours.map(tour => <ToursDetail tour={tour} handleBookBtn={handleBookBtn} key={tour._id}></ToursDetail>)
