@@ -14,7 +14,7 @@ const Destination = () => {
         },
         {
             id: 2,
-            name: 'Beach & Islands',
+            name: 'Beaches & Islands',
             image: 'https://i.ibb.co/Syk28d5/beach-1.jpg'
         },
         {
